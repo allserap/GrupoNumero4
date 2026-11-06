@@ -1,9 +1,68 @@
-@import 'tailwindcss';
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@600&family=Nunito:wght@400;700;800&display=swap');
 
-@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
-@source '../../storage/framework/views/*.php';
+:root {
+    --azul-sadu: #5E6CB3;
+    --azul-profundo: #46528F;
+    --amarillo-sol: #F5C74D;
+    --crema: #FAF6F0;
+    --carbon: #2B2D42;
+    --fuente-titulo: 'Fredoka', cursive, sans-serif;
+    --fuente-cuerpo: 'Nunito', sans-serif;
+}
 
-@theme {
-    --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
-        'Segoe UI Symbol', 'Noto Color Emoji';
+body {
+    background-color: var(--crema);
+    color: var(--carbon);
+    font-family: var(--fuente-cuerpo);
+    font-weight: 400;
+}
+
+h1, h2, h3, h4, h5, h6, .font-fredoka {
+    font-family: var(--fuente-titulo);
+    font-weight: 600;
+}
+
+/* Botón Principal */
+.btn-sadu-primary {
+    background-color: var(--amarillo-sol);
+    color: var(--carbon);
+    font-weight: 700;
+    border: none;
+    border-radius: 14px;
+    padding: 0.5rem 1.25rem;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+    transition: all 0.2s ease;
+}
+.btn-sadu-primary:hover {
+    background-color: #e5b63e;
+    color: var(--carbon);
+    transform: translateY(-1px);
+}
+
+/* Botón Secundario / Acción Admin */
+.btn-sadu-secondary {
+    background-color: var(--azul-sadu);
+    color: #ffffff;
+    font-weight: 700;
+    border: none;
+    border-radius: 14px;
+    padding: 0.5rem 1.25rem;
+    transition: all 0.2s ease;
+}
+.btn-sadu-secondary:hover {
+    background-color: var(--azul-profundo);
+    color: #ffffff;
+}
+
+/* Tarjetas Redondeadas con Sombra Suave */
+.card-sadu {
+    background-color: #ffffff;
+    border: none;
+    border-radius: 16px;
+    box-shadow: 0 8px 20px rgba(43, 45, 66, 0.06);
+}
+
+/* Barra de Navegación */
+.navbar-sadu {
+    background-color: var(--azul-profundo);
 }
