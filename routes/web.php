@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ClienteController;
+use App\Http\Controllers\PedidoController;
 
 Route::get('/', function () {
     $integrantes = [
@@ -22,3 +23,11 @@ Route::post('/clientes/store', [ClienteController::class, 'store']);
 Route::get('/clientes/edit/{cliente}', [ClienteController::class, 'edit']);
 Route::put('/clientes/update/{cliente}', [ClienteController::class, 'update']);
 Route::delete('/clientes/destroy/{cliente}', [ClienteController::class, 'destroy']);
+
+// :::::::::: RUTAS PARA PEDIDOS :::::::::
+Route::get('/pedidos/show', [PedidoController::class, 'index'])->name('pedidos.show');
+Route::get('/pedidos/create', [PedidoController::class, 'create']);
+Route::post('/pedidos/store', [PedidoController::class, 'store']);
+Route::get('/pedidos/edit/{pedido}', [PedidoController::class, 'edit']);
+Route::put('/pedidos/update/{pedido}', [PedidoController::class, 'update']);
+Route::delete('/pedidos/destroy/{pedido}', [PedidoController::class, 'destroy']);

@@ -90,7 +90,7 @@
                         <a class="nav-link" href="{{ route('clientes.show') }}">Clientes</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#" >Pedidos</a>
+                        <a class="nav-link" href="{{ route('pedidos.show') }}">Pedidos</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">Reportes</a>
