@@ -9,7 +9,8 @@
     <!-- Bootstrap 5 -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Google Fonts: Fredoka & Nunito -->
-    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@600&family=Nunito:wght@400;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@600&family=Nunito:wght@400;700;800&display=swap"
+        rel="stylesheet">
 
     <style>
         :root {
@@ -82,19 +83,31 @@
 
             <!-- Menú a la extrema derecha -->
             <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
-                        <a class="nav-link active fw-bold" href="{{ url('/') }}">Inicio</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ route('clientes.show') }}">Clientes</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ route('pedidos.show') }}">Pedidos</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Reportes</a>
-                    </li>
+                <ul class="navbar-nav ms-auto align-items-lg-center">
+                    @auth
+                        <li class="nav-item"><a class="nav-link" href="{{ url('/') }}">Inicio</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{{ route('clientes.show') }}">Clientes</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{{ route('pedidos.show') }}">Pedidos</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{{ route('reportes.index') }}">Reportes</a></li>
+                        <li class="nav-item dropdown ms-lg-3">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                                {{ Auth::user()->name }}
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-end">
+                                <li>
+                                    <form method="POST" action="{{ route('logout') }}">
+                                        @csrf
+                                        <button type="submit" class="dropdown-item">Cerrar sesión</button>
+                                    </form>
+                                </li>
+                            </ul>
+                        </li>
+                    @endauth
+
+                    @guest
+                        <li class="nav-item"><a class="nav-link" href="{{ route('login') }}">Iniciar sesión</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{{ route('register') }}">Registrarse</a></li>
+                    @endguest
                 </ul>
             </div>
         </div>
@@ -103,10 +116,10 @@
     <!-- Contenido Principal -->
     <main class="container mb-5">
         @if(session('success'))
-        <div class="alert alert-success alert-dismissible fade show rounded-4" role="alert">
-            {{ session('success') }}
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-        </div>
+            <div class="alert alert-success alert-dismissible fade show rounded-4" role="alert">
+                {{ session('success') }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
         @endif
 
         @yield('content')
@@ -119,4 +132,5 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     @yield('scripts')
 </body>
+
 </html>
