@@ -72,7 +72,7 @@
 <body>
 
     <!-- Navbar Global -->
-    <nav class="navbar navbar-expand-lg navbar-dark navbar-sadu shadow-sm mb-4">
+    <nav class="navbar d-print-none navbar-expand-lg navbar-dark navbar-sadu shadow-sm mb-4">
         <div class="container-fluid px-4">
             <!-- Título a la extrema izquierda -->
             <a class="navbar-brand brand-font fs-3" href="{{ url('/') }}">Grupo 4</a>
@@ -125,7 +125,7 @@
         @yield('content')
     </main>
 
-    <footer class="text-center py-3 text-muted border-top mt-auto">
+    <footer class="text-center py-3 text-muted border-top mt-auto d-print-none">
         <small>© 2026 Grupo 4 — Módulo: Desarrollo Web Usando Software Libre</small>
     </footer>
 

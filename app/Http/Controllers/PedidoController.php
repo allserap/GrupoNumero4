@@ -34,10 +34,10 @@ class PedidoController extends Controller
     public function store(Request $request)
     {
         $data = $request->validate([
-            'Id_Cliente'   => 'required|exists:clientes,Id_Cliente',
-            'Descripcion'  => 'required|string|max:100',
-            'Fecha_Pedido' => 'required|date',
-            'Total'        => 'required|numeric|min:0|max:999999.99',
+            'FechaPedido'   => 'required|date',
+            'FechaEntrega'  => 'required|date|after_or_equal:FechaPedido',
+            'Observaciones' => 'nullable|string|max:150',
+            'Id_Cliente'    => 'required|exists:clientes,Id_Cliente',
         ]);
 
         Pedido::create($data);
@@ -61,10 +61,10 @@ class PedidoController extends Controller
     public function update(Request $request, Pedido $pedido)
     {
         $data = $request->validate([
-            'Id_Cliente'   => 'required|exists:clientes,Id_Cliente',
-            'Descripcion'  => 'required|string|max:100',
-            'Fecha_Pedido' => 'required|date',
-            'Total'        => 'required|numeric|min:0|max:999999.99',
+            'FechaPedido'   => 'required|date',
+            'FechaEntrega'  => 'required|date|after_or_equal:FechaPedido',
+            'Observaciones' => 'nullable|string|max:150',
+            'Id_Cliente'    => 'required|exists:clientes,Id_Cliente',
         ]);
 
         $pedido->update($data);

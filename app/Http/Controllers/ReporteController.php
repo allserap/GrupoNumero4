@@ -26,7 +26,7 @@ class ReporteController extends Controller
 
             $cliente = Cliente::find($request->Id_Cliente);
             $pedidos = Pedido::where('Id_Cliente', $cliente->Id_Cliente)
-                ->orderBy('Fecha_Pedido')
+                ->orderBy('FechaPedido')
                 ->get();
         }
 

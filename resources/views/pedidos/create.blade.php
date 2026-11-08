@@ -33,16 +33,16 @@
             </select>
         </div>
         <div class="mb-3">
-            <label>Descripción</label>
-            <input type="text" name="Descripcion" class="form-control" value="{{ old('Descripcion') }}" required maxlength="100">
-        </div>
-        <div class="mb-3">
             <label>Fecha del pedido</label>
-            <input type="date" name="Fecha_Pedido" class="form-control" value="{{ old('Fecha_Pedido') }}" required>
+            <input type="datetime-local" name="FechaPedido" class="form-control" value="{{ old('FechaPedido') }}" required>
         </div>
         <div class="mb-3">
-            <label>Total ($)</label>
-            <input type="number" name="Total" class="form-control" value="{{ old('Total') }}" step="0.01" min="0" required>
+            <label>Fecha de entrega</label>
+            <input type="datetime-local" name="FechaEntrega" class="form-control" value="{{ old('FechaEntrega') }}" required>
+        </div>
+        <div class="mb-3">
+            <label>Observaciones</label>
+            <textarea name="Observaciones" class="form-control" maxlength="150" rows="3">{{ old('Observaciones') }}</textarea>
         </div>
         <button type="submit" class="btn btn-success">Guardar</button>
         <a href="/pedidos/show" class="btn btn-secondary">Cancelar</a>

@@ -14,7 +14,7 @@ return Application::configure(basePath: dirname(__DIR__))
     ->withMiddleware(function (Middleware $middleware): void {
         // Quien no ha iniciado sesión 
         $middleware->redirectGuestsTo('/login');
-        // Quien ya inició sesión va al inicio
+        // Quien ya inició sesión 
         $middleware->redirectUsersTo('/');
     })
     ->withExceptions(function (Exceptions $exceptions): void {

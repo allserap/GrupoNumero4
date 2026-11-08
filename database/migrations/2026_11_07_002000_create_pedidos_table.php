@@ -4,8 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration
-{
+return new class extends Migration {
     /**
      * Run the migrations.
      */
@@ -13,20 +12,19 @@ return new class extends Migration
     {
         Schema::create('pedidos', function (Blueprint $table) {
             $table->increments('Id_Pedido');
-            // Misma definición que clientes.Id_Cliente (increments = unsigned integer)
+            $table->dateTime('FechaPedido');
+            $table->dateTime('FechaEntrega');
+            $table->string('Observaciones', 150)->nullable();
             $table->unsignedInteger('Id_Cliente');
-            $table->string('Descripcion', 100);
-            $table->date('Fecha_Pedido');
-            $table->decimal('Total', 8, 2);
             $table->timestamps();
 
-            $table->foreign('Id_Cliente')
+            // FK_Pedido_Cliente
+            $table->foreign('Id_Cliente', 'FK_Pedido_Cliente')
                 ->references('Id_Cliente')
                 ->on('clientes')
                 ->onDelete('cascade');
         });
     }
-
     /**
      * Reverse the migrations.
      */

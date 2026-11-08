@@ -19,8 +19,8 @@
     @endif
 
     <form action="/pedidos/update/{{ $pedido->Id_Pedido }}" method="POST">
-    @csrf
-    @method('PUT')
+        @csrf
+        @method('PUT')
         <div class="mb-3">
             <label>Cliente</label>
             <select name="Id_Cliente" class="form-select" required>
@@ -32,16 +32,18 @@
             </select>
         </div>
         <div class="mb-3">
-            <label>Descripción</label>
-            <input type="text" name="Descripcion" class="form-control" value="{{ old('Descripcion', $pedido->Descripcion) }}" required maxlength="100">
-        </div>
-        <div class="mb-3">
             <label>Fecha del pedido</label>
-            <input type="date" name="Fecha_Pedido" class="form-control" value="{{ old('Fecha_Pedido', \Carbon\Carbon::parse($pedido->Fecha_Pedido)->format('Y-m-d')) }}" required>
+            <input type="datetime-local" name="FechaPedido" class="form-control"
+                value="{{ old('FechaPedido', \Carbon\Carbon::parse($pedido->FechaPedido)->format('Y-m-d\TH:i')) }}" required>
         </div>
         <div class="mb-3">
-            <label>Total ($)</label>
-            <input type="number" name="Total" class="form-control" value="{{ old('Total', $pedido->Total) }}" step="0.01" min="0" required>
+            <label>Fecha de entrega</label>
+            <input type="datetime-local" name="FechaEntrega" class="form-control"
+                value="{{ old('FechaEntrega', \Carbon\Carbon::parse($pedido->FechaEntrega)->format('Y-m-d\TH:i')) }}" required>
+        </div>
+        <div class="mb-3">
+            <label>Observaciones</label>
+            <textarea name="Observaciones" class="form-control" maxlength="150" rows="3">{{ old('Observaciones', $pedido->Observaciones) }}</textarea>
         </div>
         <button type="submit" class="btn btn-success">Actualizar</button>
         <a href="/pedidos/show" class="btn btn-secondary">Cancelar</a>

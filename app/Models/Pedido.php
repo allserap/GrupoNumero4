@@ -9,7 +9,7 @@ class Pedido extends Model
     //Llave primaria
     protected $primaryKey = 'Id_Pedido';
 
-    protected $fillable = ['Id_Cliente', 'Descripcion', 'Fecha_Pedido', 'Total'];
+    protected $fillable = ['FechaPedido', 'FechaEntrega', 'Observaciones', 'Id_Cliente'];
 
     // Un pedido pertenece a un cliente
     public function cliente()
